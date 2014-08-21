@@ -86,6 +86,9 @@ function nameUnpack(buff) {
 
     part = buff.toString('ascii', len);
 
+    if (combine.length > 1024) {
+      throw new Error('Compression pointer pointing weird places? Name > 1024 bytes.');
+    }
     if (combine.length)
       combine = combine + '.' + part;
     else
